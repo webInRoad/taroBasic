@@ -5,38 +5,34 @@ import './index.less'
 import Child2 from './child.jsx'
 
 export default class Index extends Component {
+	state = {
+		name: '张三'
+	}
+	componentWillMount() {
+		const { name } = getCurrentInstance().router.params
+		console.info(name)
+		this.setState({
+			name
+		})
+	}
 
-  state = {
-    name:'张三'
-  }
-  componentWillMount () { 
-    const {name} = getCurrentInstance().router.params
-    console.info(name)
-    this.setState({
-      name
-    })
-  }
+	componentDidMount() {}
 
-  componentDidMount () { 
-   
-    
-  }
+	componentWillUnmount() {}
 
-  componentWillUnmount () { }
+	componentDidShow() {}
 
-  componentDidShow () { }
+	componentDidHide() {}
 
-  componentDidHide () { }
-
-  showName = () => {
-    console.info(this.state.name)
-  }
-  render () {
-    const {name} = this.state
-    return (
-      <View className='index'>
-          <Child2 name={name} showName={this.showName}/>
-      </View>
-    )
-  }
+	showName = () => {
+		console.info(this.state.name)
+	}
+	render() {
+		const { name } = this.state
+		return (
+			<View className="index">
+				<Child2 name={name} showName={this.showName} />
+			</View>
+		)
+	}
 }
